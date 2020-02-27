@@ -32,8 +32,8 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 
 export const getPhotos = (page) => (dispatch) => {
     dispatch(toggleIsFetching(true))
-    photosAPI.getPhotos(page).then(data => {
-        dispatch(setPhotos(data))
+    photosAPI.getPhotos(page).then(response => {
+        dispatch(setPhotos(response.data))
         dispatch(setPage(page + 1))
         dispatch(toggleIsFetching(false))
     })

@@ -5,6 +5,6 @@ const instance = axios.create({baseURL: 'https://api.unsplash.com/', headers:{'C
 
 export const photosAPI = {
     getPhotos(page){
-        return instance.get(`photos/?page=${page}`).then(response => response.data)
+        return instance.get(`photos/?page=${page}&per_page=15`)
     }
 }
