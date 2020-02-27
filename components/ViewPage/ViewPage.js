@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './Card'
-import { TouchableHighlight, Text, View, Platform, ScrollView, Button, ActivityIndicator } from 'react-native';
+import {View, Platform, ScrollView, Button, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { setPhotos, getPhotos, toggleIsFetching } from '../../redux/photosReducer';
 
@@ -15,11 +15,14 @@ class ViewPage extends React.Component {
 
     render() {
         let cardsArray = this.props.photos.map(currentItem =>
-            <TouchableHighlight key={currentItem.id} onPress={() => this.props.navigation.navigate('Fullsize',{source:currentItem.urls.full, width: currentItem.width, height:currentItem.height})}>
-                <View>
-                    <Card  fullname={currentItem.user.name} source={currentItem.urls.small}  />
-                </View>
-            </TouchableHighlight>
+                    <Card 
+                    key={currentItem.id} 
+                    fullname={currentItem.user.name} 
+                    sourceSmall={currentItem.urls.small} 
+                    sourceFull={currentItem.urls.full}  
+                    width={currentItem.width} 
+                    height={currentItem.height}
+                    navigation={this.props.navigation} />
         )
         return (
             <ScrollView>

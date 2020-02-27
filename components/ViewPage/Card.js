@@ -1,19 +1,19 @@
 import React from 'react'
-import {Text, View, StyleSheet, Image, Dimensions} from 'react-native'
+import {Text, View, StyleSheet, Image, Dimensions, TouchableHighlight} from 'react-native'
 
 const Card = (props) => {
     return (
-        <>
+    <TouchableHighlight onPress={() => props.navigation.navigate('Fullsize',{source:props.sourceFull, width:props.width, height:props.height})}>
             <View style={styles.cardWrapper}>
                 <View>
                     <Image
                         style={styles.img}
-                        source={{ uri: props.source }} 
+                        source={{ uri: props.sourceSmall }} 
                         />
                 </View>
                 <Text style={styles.lbl}>Author: <Text style={styles.authorName}>{props.fullname}</Text></Text>
             </View>
-        </>
+    </TouchableHighlight>
     )
 }
 const styles = StyleSheet.create({
