@@ -5,15 +5,16 @@ import ImageZoom from 'react-native-image-pan-zoom';
 
 
 const DetailsPage = (props) => {
-    let res = props.route.params.width/props.route.params.height
-
+    let ratio = props.route.params.width/props.route.params.height
+    const wdth = Dimensions.get('screen').width
+    const hght = Dimensions.get('screen').height
     return (
         <View style={{flex:1, justifyContent: "center"}}>
-               <ImageZoom cropWidth={Dimensions.get('screen').width}
-               cropHeight={Dimensions.get('screen').height}
-               imageWidth={Dimensions.get('screen').width}
-               imageHeight={Dimensions.get('screen').width/res}>
-                    <Image source={{uri:props.route.params.source}} style={{width: Dimensions.get('screen').width, height: Dimensions.get('screen').width/res}} />
+               <ImageZoom cropWidth={wdth}
+               cropHeight={hght}
+               imageWidth={wdth}
+               imageHeight={wdth/ratio}>
+                    <Image source={{uri:props.route.params.source}} style={{width: wdth, height: wdth/ratio}} />
                </ImageZoom> 
                </View>
     )
